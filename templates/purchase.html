@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Purchase Invoice</title>
+
+<link rel="stylesheet" href="/static/style.css">
+
+
+<script>
+
+function addRow(){
+
+let table=document.getElementById("items");
+
+let row=table.insertRow();
+
+
+row.innerHTML=`
+
+<td>
+<input name="product">
+</td>
+
+<td>
+<input type="number" name="qty">
+</td>
+
+
+<td>
+<input type="number" name="mrp">
+</td>
+
+
+<td>
+<input type="number" name="price">
+</td>
+
+
+<td>
+
+<button type="button" onclick="removeRow(this)">
+❌
+</button>
+
+</td>
+
+`;
+
+}
+
+
+
+function removeRow(btn){
+
+let row=btn.parentNode.parentNode;
+
+row.remove();
+
+}
+
+
+</script>
+
+
+</head>
+
+
+
+<body>
+
+
+<h2>🧾 Procurement Invoice</h2>
+
+
+<a href="/dashboard">
+<button>
+⬅ Dashboard
+</button>
+</a>
+
+
+<br><br>
+
+
+
+<form method="POST">
+
+
+Supplier Name:
+
+<input name="supplier">
+
+
+<br><br>
+
+
+
+<table border="1" id="items">
+
+
+<tr>
+
+<th>Product</th>
+
+<th>Qty</th>
+
+<th>MRP</th>
+
+<th>Unit Price</th>
+
+<th>Remove</th>
+
+</tr>
+
+
+
+<tr>
+
+
+<td>
+<input name="product">
+</td>
+
+
+<td>
+<input type="number" name="qty">
+</td>
+
+
+<td>
+<input type="number" name="mrp">
+</td>
+
+
+<td>
+<input type="number" name="price">
+</td>
+
+
+<td>
+
+<button type="button" onclick="removeRow(this)">
+❌
+</button>
+
+</td>
+
+
+</tr>
+
+
+</table>
+
+
+
+<br>
+
+
+<button type="button" onclick="addRow()">
+
+➕ Add Medicine
+
+</button>
+
+
+<br><br>
+
+
+<button type="submit">
+
+Generate Invoice
+
+</button>
+
+
+</form>
+
+
+
+</body>
+
+</html>

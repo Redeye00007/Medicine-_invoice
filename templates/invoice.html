@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Procurement Invoice</title>
+
+<link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+
+<body>
+
+
+<div class="a4-page">
+
+
+<div class="shop-header">
+
+<h1>💊 YOUR MEDICINE SHOP</h1>
+
+<p>
+Address: Your Shop Address<br>
+Phone: 01XXXXXXXXX
+</p>
+
+
+</div>
+
+
+<hr>
+
+
+
+<div class="invoice-info">
+
+
+<div>
+
+<b>Invoice No:</b> #001<br>
+
+<b>Supplier:</b> {{supplier}}
+
+
+</div>
+
+
+
+<div>
+
+<b>Date:</b> {{date}}<br>
+
+<b>Status:</b> Paid
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<table class="invoice-table">
+
+
+<tr>
+
+<th>SL</th>
+
+<th>Product</th>
+
+<th>Qty</th>
+
+<th>MRP</th>
+
+<th>Unit Price</th>
+
+<th>Total</th>
+
+
+</tr>
+
+
+
+{% for i in range(product|length) %}
+
+
+<tr>
+
+
+<td>
+{{i+1}}
+</td>
+
+
+
+<td>
+{{product[i]}}
+</td>
+
+
+
+<td>
+
+{{qty[i] if qty[i] else 0}}
+
+</td>
+
+
+
+
+<td>
+
+{{mrp[i] if mrp[i] else 0}}
+
+</td>
+
+
+
+
+<td>
+
+{{price[i] if price[i] else 0}}
+
+</td>
+
+
+
+
+<td>
+
+{{(qty[i]|int if qty[i] else 0) * (price[i]|float if price[i] else 0)}}
+
+</td>
+
+
+
+</tr>
+
+
+
+{% endfor %}
+
+
+
+
+<tr>
+
+
+<td colspan="5" class="total">
+
+<b>Grand Total</b>
+
+</td>
+
+
+
+<td>
+
+<b>{{total}}</b>
+
+</td>
+
+
+
+</tr>
+
+
+
+</table>
+
+
+
+
+
+<div class="footer">
+
+
+<div>
+
+Customer Signature
+
+</div>
+
+
+
+<div>
+
+Authorized Signature
+
+</div>
+
+
+</div>
+
+
+
+
+<br><br>
+
+
+
+<button onclick="window.print()">
+
+🖨 Print Invoice
+
+</button>
+
+
+
+
+<a href="/download_pdf">
+
+<button>
+
+📄 Download PDF
+
+</button>
+
+</a>
+
+
+
+</div>
+
+
+
+</body>
+
+</html>

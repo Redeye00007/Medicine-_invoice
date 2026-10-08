@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Medicine Management</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+
+<body>
+
+
+<h2>💊 Medicine Management</h2>
+
+
+<a href="/dashboard">
+<button>⬅ Dashboard</button>
+</a>
+
+
+<hr>
+
+
+<h3>Add Medicine</h3>
+
+
+<form method="POST">
+
+
+<input name="name" placeholder="Medicine Name">
+
+
+<input name="company" placeholder="Company Name">
+
+
+<input name="batch" placeholder="Batch No">
+
+
+<input name="expiry" placeholder="Expiry Date">
+
+
+<input name="buy" placeholder="Purchase Price">
+
+
+<input name="sell" placeholder="Sale Price">
+
+
+<input name="stock" placeholder="Stock">
+
+
+<br><br>
+
+
+<button type="submit">
+Save Medicine
+</button>
+
+
+</form>
+
+
+
+<hr>
+
+
+<h3>Medicine List</h3>
+
+
+
+<table border="1">
+
+
+<tr>
+
+<th>Name</th>
+<th>Company</th>
+<th>Batch</th>
+<th>Expiry</th>
+<th>Buy</th>
+<th>Sell</th>
+<th>Stock</th>
+
+</tr>
+
+
+
+{% for m in medicines %}
+
+
+<tr>
+
+<td>{{m[1]}}</td>
+
+<td>{{m[2]}}</td>
+
+<td>{{m[3]}}</td>
+
+<td>{{m[4]}}</td>
+
+<td>{{m[5]}}</td>
+
+<td>{{m[6]}}</td>
+
+<td>{{m[7]}}</td>
+
+
+</tr>
+
+
+{% endfor %}
+
+
+</table>
+
+
+
+</body>
+
+</html>
