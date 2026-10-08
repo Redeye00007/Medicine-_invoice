@@ -1,0 +1,234 @@
+body{
+
+    font-family: Arial, sans-serif;
+    background:#eeeeee;
+    margin:0;
+    padding:20px;
+
+}
+
+
+
+/* A4 Paper Size */
+
+.a4-page{
+
+    width:210mm;
+    min-height:297mm;
+
+    background:white;
+
+    margin:auto;
+
+    padding:15mm;
+
+    box-sizing:border-box;
+
+    box-shadow:0 0 10px #aaa;
+
+}
+
+
+
+
+/* Shop Header */
+
+.shop-header{
+
+    text-align:center;
+
+}
+
+
+.shop-header h1{
+
+    margin:0;
+
+    font-size:28px;
+
+}
+
+
+.shop-header p{
+
+    margin-top:5px;
+
+    font-size:14px;
+
+}
+
+
+
+
+
+/* Invoice Info */
+
+.invoice-info{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-top:20px;
+
+    font-size:14px;
+
+}
+
+
+
+
+/* Table */
+
+
+.invoice-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin-top:25px;
+
+}
+
+
+
+
+.invoice-table th{
+
+    background:#1565c0;
+
+    color:white;
+
+    border:1px solid black;
+
+    padding:10px;
+
+    font-size:13px;
+
+}
+
+
+
+
+.invoice-table td{
+
+    border:1px solid black;
+
+    padding:10px;
+
+    text-align:center;
+
+    font-size:13px;
+
+}
+
+
+
+
+
+.total{
+
+    text-align:right;
+
+}
+
+
+
+
+
+/* Signature */
+
+
+.footer{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-top:100px;
+
+    font-size:14px;
+
+}
+
+
+
+
+button{
+
+    background:#1565c0;
+
+    color:white;
+
+    border:none;
+
+    padding:10px 15px;
+
+    border-radius:5px;
+
+    cursor:pointer;
+
+    margin:5px;
+
+}
+
+
+
+button:hover{
+
+    background:#0d47a1;
+
+}
+
+
+
+
+
+
+/* Print Settings */
+
+
+@page{
+
+    size:A4;
+
+    margin:15mm;
+
+}
+
+
+
+
+@media print{
+
+
+body{
+
+    background:white;
+
+    padding:0;
+
+}
+
+
+
+.a4-page{
+
+    box-shadow:none;
+
+    margin:0;
+
+}
+
+
+
+button,a{
+
+    display:none;
+
+}
+
+
+
+}
