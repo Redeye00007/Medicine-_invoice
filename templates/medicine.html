@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Medicine Management</title>
+<link rel="stylesheet" href="/static/style.css">
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+}
+
+input{
+    padding:8px;
+    margin:5px;
+}
+
+button{
+    padding:8px 14px;
+    cursor:pointer;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+th,td{
+    padding:10px;
+    text-align:center;
+}
+
+th{
+    background:#1e293b;
+    color:white;
+}
+
+.sales-btn{
+    background:#16a34a;
+    color:white;
+    border:none;
+    border-radius:5px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<h2>💊 Medicine Management</h2>
+
+
+<a href="/dashboard">
+<button>⬅ Dashboard</button>
+</a>
+
+<a href="/sales">
+<button class="sales-btn">
+🧾 Sales Invoice
+</button>
+</a>
+
+
+<hr>
+
+
+<h3>Add Medicine</h3>
+
+
+<form method="POST">
+
+
+<input
+    name="name"
+    placeholder="Medicine Name"
+    required
+>
+
+
+<input
+    name="company"
+    placeholder="Company Name"
+>
+
+
+<input
+    name="batch"
+    placeholder="Batch No"
+>
+
+
+<input
+    name="expiry"
+    placeholder="Expiry Date"
+>
+
+
+<input
+    name="buy"
+    placeholder="Purchase Price"
+    type="number"
+    step="0.01"
+>
+
+
+<input
+    name="sell"
+    placeholder="Sale Price"
+    type="number"
+    step="0.01"
+>
+
+
+<input
+    name="stock"
+    placeholder="Stock"
+    type="number"
+>
+
+
+<br><br>
+
+
+<button type="submit">
+💾 Save Medicine
+</button>
+
+
+</form>
+
+
+<hr>
+
+
+<h3>Medicine List</h3>
+
+
+<table border="1">
+
+<tr>
+
+<th>S.No</th>
+<th>Name</th>
+<th>Company</th>
+<th>Batch</th>
+<th>Expiry</th>
+<th>Buy</th>
+<th>Sell</th>
+<th>Stock</th>
+<th>Action</th>
+
+</tr>
+
+
+{% for m in medicines %}
+
+<tr>
+
+<td>{{ loop.index }}</td>
+
+<td>{{m[1]}}</td>
+
+<td>{{m[2]}}</td>
+
+<td>{{m[3]}}</td>
+
+<td>{{m[4]}}</td>
+
+<td>{{m[5]}}</td>
+
+<td>{{m[6]}}</td>
+
+<td>{{m[7]}}</td>
+
+<td>
+
+<a href="/sales?medicine={{ m[1] }}&price={{ m[6] }}">
+
+<button class="sales-btn">
+🛒 Sell
+</button>
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+
+</table>
+
+
+</body>
+
+</html>

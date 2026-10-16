@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Medicine RMS Dashboard</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+
+body{
+
+    min-height:100vh;
+
+    background:
+    linear-gradient(135deg,#020617,#0f172a,#052e16);
+
+    color:white;
+
+}
+
+
+/* Main Box */
+
+.container{
+
+    padding:25px;
+
+}
+
+
+/* Header */
+
+.header{
+
+    background:#0f172a;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    border:1px solid #22c55e;
+
+    box-shadow:
+    0 0 20px rgba(34,197,94,.5);
+
+}
+
+
+.header h1{
+
+    color:#22c55e;
+
+    text-shadow:
+    0 0 10px #22c55e;
+
+}
+
+
+
+/* Card */
+
+.card{
+
+    margin-top:25px;
+
+    padding:25px;
+
+    background:rgba(15,23,42,.9);
+
+    border-radius:18px;
+
+    border:1px solid #06b6d4;
+
+    box-shadow:
+    0 0 20px rgba(6,182,212,.4);
+
+}
+
+
+.card h2{
+
+    color:#06b6d4;
+
+}
+
+
+
+.count{
+
+    font-size:45px;
+
+    font-weight:bold;
+
+    color:#22c55e;
+
+    margin-top:10px;
+
+}
+
+
+
+/* Buttons */
+
+
+.btn{
+
+    display:block;
+
+    width:250px;
+
+    padding:14px;
+
+    margin:15px 0;
+
+    text-align:center;
+
+    text-decoration:none;
+
+    border-radius:12px;
+
+    font-weight:bold;
+
+    color:#020617;
+
+    background:#22c55e;
+
+    box-shadow:
+    0 0 15px #22c55e;
+
+}
+
+
+.btn:hover{
+
+    background:#06b6d4;
+
+    box-shadow:
+    0 0 20px #06b6d4;
+
+}
+
+
+
+.logout{
+
+    background:#ef4444;
+
+    color:white;
+
+    box-shadow:
+    0 0 15px #ef4444;
+
+}
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<div class="header">
+
+<h1>💊 Medicine RMS Dashboard</h1>
+
+</div>
+
+
+
+<div class="card">
+
+<h2>Total Medicine</h2>
+
+<div class="count">
+
+{{ total_medicine }}
+
+</div>
+
+
+</div>
+
+
+
+<div class="card">
+
+
+<a class="btn" href="/medicine">
+📦 Medicine Management
+</a>
+
+
+<a class="btn" href="/purchase">
+🧾 Create Purchase Invoice
+</a>
+
+<a class="btn" href="/sales">
+    🧾 Sales Invoice
+</a>
+
+
+<a class="btn logout" href="/logout">
+🚪 Logout
+</a>
+
+
+</div>
+
+
+
+</div>
+
+
+</body>
+
+</html>

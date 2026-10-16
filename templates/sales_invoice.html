@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Sales Invoice</title>
+
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body{
+
+    background:#e5e7eb;
+
+    font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+    color:#111827;
+
+    padding:20px;
+
+}
+
+
+/* =========================
+   INVOICE
+========================= */
+
+.invoice{
+
+    width:800px;
+
+    max-width:100%;
+
+    margin:auto;
+
+    background:white;
+
+    padding:35px;
+
+    box-shadow:
+    0 0 15px rgba(0,0,0,.15);
+
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+
+    text-align:center;
+
+}
+
+
+.shop-name{
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    margin-bottom:4px;
+
+}
+
+
+.shop-info{
+
+    font-size:14px;
+
+    line-height:1.5;
+
+}
+
+
+.invoice-title{
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    margin-top:8px;
+
+}
+
+
+.line{
+
+    border-top:2px solid #111;
+
+    margin:12px 0;
+
+}
+
+
+/* =========================
+   CUSTOMER DETAILS
+========================= */
+
+.details{
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:6px;
+
+    font-size:14px;
+
+    line-height:1.5;
+
+}
+
+
+.details div{
+
+    min-height:22px;
+
+}
+
+
+.full{
+
+    grid-column:
+    1 / -1;
+
+}
+
+
+/* =========================
+   PRODUCT TABLE
+========================= */
+
+table{
+
+    width:100%;
+
+    border-collapse:
+    collapse;
+
+    margin-top:12px;
+
+}
+
+
+th{
+
+    border-top:
+    2px solid #111;
+
+    border-bottom:
+    2px solid #111;
+
+    padding:8px 5px;
+
+    text-align:left;
+
+    font-size:14px;
+
+}
+
+
+td{
+
+    padding:7px 5px;
+
+    font-size:14px;
+
+}
+
+
+.num{
+
+    text-align:right;
+
+}
+
+
+/* =========================
+   TOTAL
+========================= */
+
+.total-area{
+
+    border-top:
+    2px solid #111;
+
+    margin-top:12px;
+
+    padding-top:10px;
+
+}
+
+
+.total-row{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:30px;
+
+    padding:4px 0;
+
+    font-size:14px;
+
+}
+
+
+.total-row strong{
+
+    width:130px;
+
+    text-align:right;
+
+}
+
+
+.grand{
+
+    font-size:18px;
+
+    font-weight:bold;
+
+}
+
+
+/* =========================
+   SIGNATURE
+========================= */
+
+.signature{
+
+    margin-top:30px;
+
+    font-size:14px;
+
+}
+
+
+/* =========================
+   THANK YOU
+========================= */
+
+.thanks{
+
+    text-align:center;
+
+    margin-top:30px;
+
+    font-size:19px;
+
+    font-weight:bold;
+
+}
+
+
+.developer{
+
+    text-align:center;
+
+    margin-top:8px;
+
+    font-size:12px;
+
+    color:#444;
+
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttons{
+
+    text-align:center;
+
+    margin-top:20px;
+
+}
+
+
+.buttons button,
+.buttons a{
+
+    display:inline-block;
+
+    padding:9px 15px;
+
+    margin:4px;
+
+    border:0;
+
+    border-radius:5px;
+
+    text-decoration:none;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}
+
+
+/* PRINT */
+
+.print{
+
+    background:#2563eb;
+
+    color:white;
+
+}
+
+
+/* PDF */
+
+.download{
+
+    background:#dc2626;
+
+    color:white;
+
+}
+
+
+/* NEW */
+
+.new{
+
+    background:#16a34a;
+
+    color:white;
+
+}
+
+
+/* BACK */
+
+.back{
+
+    background:#374151;
+
+    color:white;
+
+}
+
+
+/* =========================
+   NO INVOICE
+========================= */
+
+.no-invoice{
+
+    text-align:center;
+
+    padding:40px;
+
+    font-size:18px;
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    body{
+
+        padding:8px;
+
+    }
+
+
+    .invoice{
+
+        width:100%;
+
+        padding:18px;
+
+    }
+
+
+    .shop-name{
+
+        font-size:22px;
+
+    }
+
+
+    .invoice-title{
+
+        font-size:20px;
+
+    }
+
+
+    .details{
+
+        grid-template-columns:
+        1fr;
+
+    }
+
+
+    table{
+
+        font-size:12px;
+
+    }
+
+
+    th,
+    td{
+
+        padding:5px 3px;
+
+        font-size:12px;
+
+    }
+
+
+    .total-row{
+
+        font-size:13px;
+
+    }
+
+
+    .buttons button,
+    .buttons a{
+
+        padding:8px 10px;
+
+        font-size:11px;
+
+    }
+
+}
+
+
+/* =========================
+   PRINT
+========================= */
+
+@media print{
+
+    @page{
+
+        size:A4;
+
+        margin:10mm;
+
+    }
+
+
+    body{
+
+        background:white;
+
+        padding:0;
+
+    }
+
+
+    .invoice{
+
+        width:100%;
+
+        max-width:none;
+
+        box-shadow:none;
+
+        padding:10px;
+
+    }
+
+
+    .buttons{
+
+        display:none !important;
+
+    }
+
+
+    .shop-name{
+
+        font-size:24px;
+
+    }
+
+
+    table{
+
+        page-break-inside:auto;
+
+    }
+
+
+    tr{
+
+        page-break-inside:avoid;
+
+        page-break-after:auto;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="invoice">
+
+
+{% if invoice %}
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<div class="header">
+
+
+    <div class="shop-name">
+
+        {{ shop_name }}
+
+    </div>
+
+
+    <div class="shop-info">
+
+        {{ shop_address }}
+
+        <br>
+
+        Hot Line: {{ shop_phone }}
+
+        <br>
+
+        @gmail.com
+
+    </div>
+
+
+    <div class="invoice-title">
+
+        Sales Invoice
+
+    </div>
+
+
+</div>
+
+
+<div class="line"></div>
+
+
+<!-- =========================
+     CUSTOMER INFORMATION
+========================= -->
+
+<div class="details">
+
+
+    <div>
+
+        <b>Bill No.:</b>
+
+        {{ invoice.bill_no }}
+
+    </div>
+
+
+    <div>
+
+        <b>Date:</b>
+
+        {{ invoice.date }}
+
+    </div>
+
+
+    <div>
+
+        <b>C.Name:</b>
+
+        {{ invoice.customer_name }}
+
+    </div>
+
+
+    <div>
+
+        <b>Time:</b>
+
+        {{ invoice.time }}
+
+    </div>
+
+
+    <div>
+
+        <b>Location:</b>
+
+        {{ invoice.location or "-" }}
+
+    </div>
+
+
+    <div>
+
+        <b>Phone:</b>
+
+        {{ invoice.phone or "-" }}
+
+    </div>
+
+
+</div>
+
+
+<!-- =========================
+     MEDICINE TABLE
+========================= -->
+
+<table>
+
+
+<thead>
+
+<tr>
+
+    <th style="width:55px;">
+        S.No.
+    </th>
+
+    <th>
+        Product Name
+    </th>
+
+    <th
+        class="num"
+        style="width:70px;">
+        Qty
+    </th>
+
+    <th
+        class="num"
+        style="width:90px;">
+        Price
+    </th>
+
+    <th
+        class="num"
+        style="width:100px;">
+        Amount
+    </th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+
+
+{% for item in invoice.products %}
+
+
+<tr>
+
+
+    <td>
+
+        {{ loop.index }}
+
+    </td>
+
+
+    <td>
+
+        {{ item.name }}
+
+    </td>
+
+
+    <td class="num">
+
+        {% if item.qty|float == item.qty|int %}
+
+            {{ item.qty|int }}
+
+        {% else %}
+
+            {{ item.qty }}
+
+        {% endif %}
+
+    </td>
+
+
+    <td class="num">
+
+        {{ "%.2f"|format(item.price|float) }}
+
+    </td>
+
+
+    <td class="num">
+
+        {{ "%.2f"|format(item.amount|float) }}
+
+    </td>
+
+
+</tr>
+
+
+{% endfor %}
+
+
+</tbody>
+
+
+</table>
+
+
+<!-- =========================
+     TOTAL AREA
+========================= -->
+
+<div class="total-area">
+
+
+    <div class="total-row grand">
+
+        <span>
+
+            Total Tk. :
+
+        </span>
+
+
+        <strong>
+
+            {{ "%.2f"|format(invoice.total|float) }}
+
+        </strong>
+
+    </div>
+
+
+    <div class="total-row">
+
+        <span>
+
+            Discount (-) :
+
+        </span>
+
+
+        <strong>
+
+            {{ "%.2f"|format(invoice.discount|float) }}
+
+        </strong>
+
+    </div>
+
+
+    <div class="total-row">
+
+        <span>
+
+            Payable Tk. :
+
+        </span>
+
+
+        <strong>
+
+            {{ "%.2f"|format(invoice.payable|float) }}
+
+        </strong>
+
+    </div>
+
+
+    <div class="total-row">
+
+        <span>
+
+            Received Tk. :
+
+        </span>
+
+
+        <strong>
+
+            {{ "%.2f"|format(invoice.received|float) }}
+
+        </strong>
+
+    </div>
+
+
+    <div class="total-row">
+
+        <span>
+
+            Due Tk. :
+
+        </span>
+
+
+        <strong>
+
+            {{ "%.2f"|format(invoice.due|float) }}
+
+        </strong>
+
+    </div>
+
+
+</div>
+
+
+<!-- =========================
+     SIGNATURE
+========================= -->
+
+<div class="signature">
+
+    Signature Of
+
+    <br>
+
+    [Salesman]
+
+</div>
+
+
+<!-- =========================
+     THANK YOU
+========================= -->
+
+<div class="thanks">
+
+    ....Thank You....
+
+</div>
+
+
+<div class="developer">
+
+    Developed By:- Dream Soft Tech, Mo:-0171
+
+</div>
+
+
+<!-- =========================
+     BUTTONS
+========================= -->
+
+<div class="buttons">
+
+
+    <button
+        class="print"
+        onclick="window.print()">
+
+        🖨 Print Invoice
+
+    </button>
+
+
+    <a
+        href="/download_sales_pdf"
+        class="download">
+
+        📄 Download PDF
+
+    </a>
+
+
+    <a
+        href="/sales"
+        class="new">
+
+        ➕ New Sales Invoice
+
+    </a>
+
+
+    <button
+        class="back"
+        onclick="history.back()">
+
+        ← Back
+
+    </button>
+
+
+</div>
+
+
+{% else %}
+
+
+<!-- =========================
+     NO INVOICE
+========================= -->
+
+<div class="no-invoice">
+
+    <h3>
+
+        No Sales Invoice Found
+
+    </h3>
+
+
+    <br>
+
+
+    <a
+        href="/sales"
+        class="new">
+
+        ➕ Create New Sales Invoice
+
+    </a>
+
+</div>
+
+
+{% endif %}
+
+
+</div>
+
+
+</body>
+
+</html>
